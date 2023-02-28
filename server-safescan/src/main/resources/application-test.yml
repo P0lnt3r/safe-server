@@ -1,0 +1,25 @@
+env:
+  test
+
+spring:
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.88.216.172:3306/blockchain?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
+    username: root
+    password: cdfd2ws$RF0917
+
+schedulers:
+  pair-swap-transaction:
+    start-height: 24298275
+
+accounts:
+  private-key:
+    account0: 8d0b1991e3913a1b41c0f918e92e312f68738c276441d39aade7be16d73e75f1
+    account1: 760320df3712b59fc96db4885d8da9a48e4928d466f43602fe8cae41c3e801a9
+
+web3j:
+  endpoint: http://localhost:8545
+
+
+

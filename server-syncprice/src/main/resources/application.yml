@@ -1,0 +1,17 @@
+server:
+  port: 8092
+
+spring:
+  # 环境配置 : dev:开发环境 , test:测试环境 , prod:生产环境
+  profiles:
+    active: prod
+
+  # 国际化资源配置
+  messages:
+    basename: i18n/ValidationMessages , i18n/error_code
+    encoding: UTF-8
+
+  # Spring-MVC 配置
+  mvc:
+    # 屏蔽 Springboot 默认的一些错误处理,出现异常向外抛给 Advisor 进行处理
+    throw-exception-if-no-handler-found: true
