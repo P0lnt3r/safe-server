@@ -19,6 +19,7 @@ public class BlockVO extends AbsValueObject<BlockEntity> {
 
     private LocalDateTime time;
 
+    @ApiModelProperty("区块时间戳")
     private BigInteger timestamp;
 
     private Integer txns;
