@@ -14,6 +14,7 @@ public class BlockVO extends AbsValueObject<BlockEntity> {
     @ApiModelProperty("区块高度")
     private BigInteger number;
 
+    @ApiModelProperty("区块哈希")
     private String hash;
 
     private LocalDateTime time;
