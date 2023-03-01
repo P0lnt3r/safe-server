@@ -1,0 +1,15 @@
+env:
+  dev
+
+spring:
+  # 数据源配置
+  datasource:
+#    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+#    url: jdbc:p6spy:mysql://localhost:3306/blockchain?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-wz90u612mp7r8m297wo.mysql.rds.aliyuncs.com/safescan?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
+    username: root
+    password: Zy123456!
+
+vpn:
+  file-path: "/opt/vpn.json"

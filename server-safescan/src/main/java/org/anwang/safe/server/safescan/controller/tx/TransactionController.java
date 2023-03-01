@@ -33,7 +33,11 @@ public class TransactionController {
     @PostMapping("/txs")
     public PageResponseVO<TransactionVO, TransactionEntity> blocks(@RequestBody TransactionPageQueryDTO dto) {
         Page<TransactionEntity> entityPage = dto.convertPage();
-        transactionService.page(entityPage);
+        if ( dto.getBlockNumber() != null ){
+            transactionService.pageByBlockNumber(dto.getBlockNumber() , entityPage);
+        }else{
+            transactionService.page(entityPage);
+        }
         PageResponseVO<TransactionVO, TransactionEntity> pageVO = new PageResponseVO<TransactionVO, TransactionEntity>().from(entityPage , TransactionVO.class);
         return pageVO;
     }

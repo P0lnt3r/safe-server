@@ -15,6 +15,7 @@
         <module>server-safescan</module>
         <module>blockchain</module>
         <module>server-syncprice</module>
+        <module>server-monitor</module>
     </modules>
 
     <properties>

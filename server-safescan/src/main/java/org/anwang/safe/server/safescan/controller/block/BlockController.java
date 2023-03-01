@@ -31,6 +31,8 @@ public class BlockController {
     @ApiOperation("区块列表")
     @PostMapping("/blocks")
     public PageResponseVO<BlockVO , BlockEntity> blocks(@RequestBody BlockPageQueryDTO dto) {
+        dto.setOrderProp("number");
+        dto.setOrderMode("desc");
         Page<BlockEntity> entityPage = dto.convertPage();
         blockService.page(entityPage);
         PageResponseVO pageVO = new PageResponseVO<BlockVO , BlockEntity>().from(entityPage , BlockVO.class);
