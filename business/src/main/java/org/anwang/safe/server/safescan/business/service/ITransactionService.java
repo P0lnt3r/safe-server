@@ -12,4 +12,6 @@ public interface ITransactionService extends IService<TransactionEntity> {
 
     Page<TransactionEntity> pageByBlockNumber(BigInteger blockNumber , Page page);
 
+    Page<TransactionEntity> pageByAddress( String address , Page page );
+
 }

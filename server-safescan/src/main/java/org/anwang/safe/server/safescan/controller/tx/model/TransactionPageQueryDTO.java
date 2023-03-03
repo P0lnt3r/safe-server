@@ -11,6 +11,17 @@ public class TransactionPageQueryDTO extends PageQueryDTO<TransactionEntity> {
     @ApiModelProperty("区块高度")
     private BigInteger blockNumber;
 
+    @ApiModelProperty("钱包地址")
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public BigInteger getBlockNumber() {
         return blockNumber;
     }
@@ -18,4 +29,8 @@ public class TransactionPageQueryDTO extends PageQueryDTO<TransactionEntity> {
     public void setBlockNumber(BigInteger blockNumber) {
         this.blockNumber = blockNumber;
     }
+
+
+
+
 }

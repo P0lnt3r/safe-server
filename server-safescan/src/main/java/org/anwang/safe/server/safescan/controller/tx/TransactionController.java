@@ -42,6 +42,15 @@ public class TransactionController {
         return pageVO;
     }
 
+    @ApiOperation("地址交易列表")
+    @PostMapping("/txs/address")
+    public PageResponseVO<TransactionVO , TransactionEntity> addressTransactions( @RequestBody TransactionPageQueryDTO dto ){
+        String address = dto.getAddress();
+        Page<TransactionEntity> entityPage = dto.convertPage();
+        transactionService.pageByAddress(address , entityPage);
+        return new PageResponseVO<TransactionVO, TransactionEntity>().from(entityPage , TransactionVO.class);
+    }
+
     @ApiOperation("交易信息")
     @PostMapping("/tx")
     public TransactionVO blocks(@RequestBody TransactionQueryDTO dto) {
