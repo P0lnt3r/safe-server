@@ -61,7 +61,7 @@ public class BlockchainParseScheduler implements InitializingBean {
         log.info("[{}]/[{}] 区块解析任务完成. 起始同步高度:{} , 当前链上最新高度:{}", currentBlockNumber, latestBlockNumber, currentBlockNumber, latestBlockNumber);
     }
 
-    @Scheduled(cron = "0/3 * * * * ?")
+//    @Scheduled(cron = "0/3 * * * * ?")
     public void loop() throws Exception {
         while (currentBlockNumber.compareTo(latestBlockNumber) < 1) {
             log.info("[{}]/[{}] 获取区块[{}]数据:ethGetBlockByNumber", currentBlockNumber, latestBlockNumber, currentBlockNumber);
@@ -145,6 +145,10 @@ public class BlockchainParseScheduler implements InitializingBean {
                     transactionEntityList.size(),
                     eventLogEntityList.size(),
                     erc20TransferEntityList.size()
+            );
+            BlockchainContext.instance.updateBlockAndTransactionQueue(
+                    blockEntity,
+                    transactionEntityList
             );
             currentBlockNumber = currentBlockNumber.add(BigInteger.ONE);
         }

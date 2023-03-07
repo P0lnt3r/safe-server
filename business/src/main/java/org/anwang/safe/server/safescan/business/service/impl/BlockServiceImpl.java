@@ -66,6 +66,14 @@ public class BlockServiceImpl extends ServiceImpl<IBlockEntityMapper, BlockEntit
     }
 
     @Override
+    public List<BlockEntity> getLatest(int size) {
+        LambdaQueryWrapper<BlockEntity> queryWrapper = Wrappers.lambdaQuery();
+        queryWrapper.orderByDesc( BlockEntity::getNumber );
+        queryWrapper.last("limit " + size);
+        return list(queryWrapper);
+    }
+
+    @Override
     public void saveBatchBlockDetails(
             BlockEntity blockEntity,
             List<TransactionEntity> transactionEntityList,

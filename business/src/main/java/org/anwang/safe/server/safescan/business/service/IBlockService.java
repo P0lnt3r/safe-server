@@ -28,4 +28,11 @@ public interface IBlockService extends IService<BlockEntity> {
 
     BlockEntity getByHash(String hash);
 
+    /**
+     * 获取最新区块数据，倒序顺序
+     * @param size
+     * @return
+     */
+    List<BlockEntity> getLatest(int size);
+
 }

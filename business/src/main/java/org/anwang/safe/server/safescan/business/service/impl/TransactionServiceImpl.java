@@ -31,11 +31,9 @@ public class TransactionServiceImpl extends ServiceImpl<ITransactionEntityMapper
     @Override
     public Page<TransactionEntity> pageByAddress(String address , Page page) {
         LambdaQueryWrapper<TransactionEntity> queryWrapper = Wrappers.lambdaQuery();
-
         queryWrapper.eq(TransactionEntity::getFrom , address);
         queryWrapper.or();
         queryWrapper.eq(TransactionEntity::getTo,address);
-
         return page(page , queryWrapper);
     }
 
@@ -44,5 +42,13 @@ public class TransactionServiceImpl extends ServiceImpl<ITransactionEntityMapper
         LambdaQueryWrapper<TransactionEntity> queryWrapper = Wrappers.lambdaQuery();
         queryWrapper.eq(TransactionEntity::getBlockNumber , blockNumber);
         return page(page , queryWrapper);
+    }
+
+    @Override
+    public List<TransactionEntity> getLatest(Integer size) {
+        LambdaQueryWrapper<TransactionEntity> queryWrapper = Wrappers.lambdaQuery();
+        queryWrapper.orderByDesc(TransactionEntity::getBlockNumber);
+        queryWrapper.last("limit " + size);
+        return list(queryWrapper);
     }
 }
