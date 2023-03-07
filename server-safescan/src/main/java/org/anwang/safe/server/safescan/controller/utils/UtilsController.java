@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Api(tags = "Utils")
-@RestController("/utils")
+@RestController()
 public class UtilsController {
 
     @Autowired
     IAbiMethodSignatureService abiMethodSignatureService;
 
-    @GetMapping("/abi_method_signature")
+    @GetMapping("/utils/abi_method_signature")
     public List<AbiMethodSignatureVO> listAbiMethodSignature(){
         return abiMethodSignatureService.list().stream()
                 .map( abiMethodSignatureEntity -> (AbiMethodSignatureVO)new AbiMethodSignatureVO().from(abiMethodSignatureEntity) )
