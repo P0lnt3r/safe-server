@@ -2,13 +2,13 @@ package org.anwang.safe.server.safescan.controller.utils.model;
 
 public class QueryAddressAbiDTO {
 
-    private String[] addresses;
+    private String address;
 
-    public String[] getAddresses() {
-        return addresses;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddresses(String[] addresses) {
-        this.addresses = addresses;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

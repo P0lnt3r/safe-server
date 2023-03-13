@@ -23,19 +23,19 @@ public class UtilsController {
     @Autowired
     IAddressAbiService addressAbiService;
 
-    @GetMapping("/utils/abi_method_signature")
+    @GetMapping("/utils/getAbiMethodSignature")
     public List<AbiMethodSignatureVO> listAbiMethodSignature(){
         return abiMethodSignatureService.list().stream()
                 .map( abiMethodSignatureEntity -> (AbiMethodSignatureVO)new AbiMethodSignatureVO().from(abiMethodSignatureEntity) )
                 .collect(Collectors.toList());
     }
 
-    @PostMapping("/utils/getabi")
+    @PostMapping("/utils/getAbi")
     public List<AddressAbiVO> getAbi(@RequestBody QueryAddressAbiDTO dto){
-        List<AddressAbiEntity> list = addressAbiService.getByAddress(dto.getAddresses());
+        List<AddressAbiEntity> list = addressAbiService.getByAddress(dto.getAddress());
         return list.stream().map( addressAbiEntity -> {
             return (AddressAbiVO)new AddressAbiVO().from(addressAbiEntity);
-        } ).collect(Collectors.toList());
+        }).collect(Collectors.toList());
     }
 
 }
